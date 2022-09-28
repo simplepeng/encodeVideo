@@ -9,7 +9,11 @@ public class Main {
     public static void main(String[] args) throws FFmpegFrameRecorder.Exception {
         File root = new File("");
         System.out.println("root = " + root.getAbsolutePath());
+        File imgDir = new File(root.getAbsolutePath(), "imgs");
+        System.out.println("imgDir = " + imgDir.getAbsolutePath());
 
+        File[] files = imgDir.listFiles();
+        if (files == null || files.length < 1) return;
     }
 
     public static void encodeToVideo(File root) {
