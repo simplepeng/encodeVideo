@@ -27,41 +27,63 @@ public class Main {
 
         //临时的适配文件
         File tmpFile = new File(root.getAbsoluteFile(), "files" + File.separator + "tmp.mp4");
+        if (tmpFile.exists()) {
+            tmpFile.delete();
+        }
         //音频文件
         File audioFile = new File(root.getAbsoluteFile(), "files" + File.separator + "audio.mp3");
         //合成完成的视频文件
         File outFile = new File(root.getAbsoluteFile(), "out.mp4");
+        if (outFile.exists()) {
+            outFile.delete();
+        }
 
         //视频的宽高
         int width = 540;
         int height = 960;
 
         try {
-//            encodeToVideo(Arrays.stream(files).toList(), tmpFile, width, height);
-            mixer(tmpFile, audioFile, outFile);
+            encodeToVideo(Arrays.stream(files).toList(), tmpFile, width, height, audioFile);
+//            mixer(tmpFile, audioFile, outFile);
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
 
-    public static void encodeToVideo(List<File> files, File outFile, int width, int height) throws Throwable {
+    public static void encodeToVideo(List<File> files, File outFile, int width, int height,
+                                     File audioFile) throws Throwable {
+        FFmpegFrameGrabber audioGrabber = new FFmpegFrameGrabber(audioFile);
+        audioGrabber.start();
+
         FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(outFile.getAbsolutePath(), width, height);
         recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);
         recorder.setFrameRate(25);
         recorder.setPixelFormat(avutil.AV_PIX_FMT_YUV420P);
+        recorder.setSampleRate(audioGrabber.getSampleRate());
+        recorder.setAudioChannels(audioGrabber.getAudioChannels());
         recorder.setFormat("mp4");
 
         recorder.start();
         Java2DFrameConverter converter = new Java2DFrameConverter();
+
+        Frame audioFrame = null;
 
         int frameDuration = 2;//每张图片停留的秒速
         for (File file : files) {
             BufferedImage read = ImageIO.read(file);
             for (int i = 0; i < 25 * frameDuration; i++) {
                 recorder.record(converter.getFrame(read));
+                audioFrame = audioGrabber.grabFrame();
+                if (audioFrame != null) {
+                    recorder.record(audioFrame);
+                }else {
+                    recorder.record(audioFrame);
+                }
             }
         }
 
+        audioGrabber.stop();
+        audioGrabber.release();
         recorder.stop();
         recorder.release();
     }
