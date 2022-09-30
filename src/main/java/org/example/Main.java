@@ -26,10 +26,10 @@ public class Main {
         if (files == null || files.length < 1) return;
 
         //临时的适配文件
-        File tmpFile = new File(root.getAbsoluteFile(), "files" + File.separator + "tmp.mp4");
-        if (tmpFile.exists()) {
-            tmpFile.delete();
-        }
+//        File tmpFile = new File(root.getAbsoluteFile(), "files" + File.separator + "tmp.mp4");
+//        if (tmpFile.exists()) {
+//            tmpFile.delete();
+//        }
         //音频文件
         File audioFile = new File(root.getAbsoluteFile(), "files" + File.separator + "audio.mp3");
         //合成完成的视频文件
@@ -43,7 +43,7 @@ public class Main {
         int height = 960;
 
         try {
-            encodeToVideo(Arrays.stream(files).toList(), tmpFile, width, height, audioFile);
+            encodeToVideo(Arrays.stream(files).toList(), outFile, width, height, audioFile);
 //            mixer(tmpFile, audioFile, outFile);
         } catch (Throwable e) {
             e.printStackTrace();
@@ -66,24 +66,27 @@ public class Main {
         recorder.start();
         Java2DFrameConverter converter = new Java2DFrameConverter();
 
-        Frame audioFrame = null;
-
         int frameDuration = 2;//每张图片停留的秒速
         for (File file : files) {
             BufferedImage read = ImageIO.read(file);
             for (int i = 0; i < 25 * frameDuration; i++) {
                 recorder.record(converter.getFrame(read));
-                audioFrame = audioGrabber.grabFrame();
-                if (audioFrame != null) {
-                    recorder.record(audioFrame);
-                }else {
-                    recorder.record(audioFrame);
-                }
+                recorder.record(audioGrabber.grabFrame());
+                recorder.record(audioGrabber.grabFrame());
             }
         }
+//        int videoTotalFrames = files.size() * 25 * 2;
+//        int audioTotalFrames = 100;
+//        int audioFrameIndex = 0;
+//        Frame audioFrame = null;
+//        while ((audioFrame = audioGrabber.grabFrame()) != null && audioFrameIndex < audioTotalFrames) {
+//            recorder.record(audioFrame);
+//            audioFrameIndex++;
+//        }
 
         audioGrabber.stop();
         audioGrabber.release();
+
         recorder.stop();
         recorder.release();
     }

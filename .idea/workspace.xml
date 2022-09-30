@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d7b5e16-3fd6-4bd5-8af5-e7e27037012a" name="Changes" comment="可以合成了">
+    <list default="true" id="5d7b5e16-3fd6-4bd5-8af5-e7e27037012a" name="Changes" comment="TODO：视频和音频长度不一致">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
@@ -15,6 +15,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.5.7/javacv-1.5.7.jar!/org/bytedeco/javacv/FFmpegFrameRecorder.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.5.7/javacv-1.5.7.jar!/org/bytedeco/javacv/FrameGrabber.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.5.7/javacv-1.5.7.jar!/org/bytedeco/javacv/FrameRecorder.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -32,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "/Users/simple/Desktop/workspace/java/encodeVideo",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -80,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664436034914</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="TODO：视频和音频长度不一致">
+      <created>1664439090528</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1664439090528</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,36 +107,19 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="可以合成了" />
-    <option name="LAST_COMMIT_MESSAGE" value="可以合成了" />
+    <MESSAGE value="TODO：视频和音频长度不一致" />
+    <option name="LAST_COMMIT_MESSAGE" value="TODO：视频和音频长度不一致" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.5.7/javacv-1.5.7.jar!/org/bytedeco/javacv/FFmpegFrameRecorder.class</url>
-          <line>573</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.5.7/javacv-1.5.7.jar!/org/bytedeco/javacv/FFmpegFrameRecorder.class</url>
           <line>368</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.5.7/javacv-1.5.7.jar!/org/bytedeco/javacv/FFmpegFrameRecorder.class</url>
-          <line>562</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.5.7/javacv-1.5.7.jar!/org/bytedeco/javacv/FFmpegFrameRecorder.class</url>
-          <line>405</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
